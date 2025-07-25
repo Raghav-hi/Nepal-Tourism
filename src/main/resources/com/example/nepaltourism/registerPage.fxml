@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane fx:id="root" styleClass="login-root" stylesheets="@css/auth.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ap.RegisterController">
+
+    <!-- Dark overlay -->
+    <Rectangle fx:id="overlay" StackPane.alignment="CENTER" />
+
+    <VBox alignment="TOP_CENTER" maxHeight="750" maxWidth="450" spacing="18" styleClass="auth-container" StackPane.alignment="CENTER">
+        <padding>
+            <Insets bottom="30" left="40" right="40" top="30" />
+        </padding>
+
+        <!-- Logo + title -->
+        <HBox alignment="CENTER_LEFT" maxWidth="320" spacing="10">
+            <ImageView fx:id="logoImage" fitHeight="60" fitWidth="60" preserveRatio="true">
+                <Image url="@images/logo.png" />
+
+            </ImageView>
+            <Label styleClass="logo-text" text="Yatra Sathi" />
+        </HBox>
+
+        <Label styleClass="auth-title" text="Register With Us" />
+
+        <!-- Role selection -->
+        <VBox fx:id="roleSelectionBox" alignment="CENTER" spacing="10">
+            <Button fx:id="touristBtn" maxWidth="300" onAction="#onTouristSelected" styleClass="auth-button" text="Register as Tourist" />
+            <Button fx:id="guideBtn" maxWidth="300" onAction="#onGuideSelected" styleClass="auth-button-alt" text="Register as Guide" />
+        </VBox>
+
+        <!-- Form fields (initially hidden) -->
+        <VBox fx:id="formContainer" alignment="CENTER" managed="false" spacing="10" visible="false">
+
+            <TextField fx:id="nameField" maxWidth="320" promptText="Full Name" style="-fx-pref-height: 40;" />
+            <TextField fx:id="nationalityField" maxWidth="320" promptText="Nationality" style="-fx-pref-height: 40;" />
+            <TextField fx:id="emergencyContactField" maxWidth="320" promptText="Emergency Contact" style="-fx-pref-height: 40;" />
+            <TextField fx:id="phoneField" maxWidth="320" promptText="Phone Number" style="-fx-pref-height: 40;" />
+            <TextField fx:id="emailField" maxWidth="320" promptText="Email Address" style="-fx-pref-height: 40;" />
+            <PasswordField fx:id="passwordField" maxWidth="320" promptText="Password" style="-fx-pref-height: 40;" />
+            <PasswordField fx:id="confirmPasswordField" maxWidth="320" promptText="Confirm Password" style="-fx-pref-height: 40;" />
+            <ComboBox fx:id="LanguagesField" maxWidth="320" promptText="Languages Preference" style="-fx-pref-height: 40;" />
+
+            <!-- Guide only -->
+            <VBox fx:id="guideFieldsContainer" alignment="CENTER" managed="false" spacing="10" visible="false">
+                <TextField fx:id="guideExperienceField" maxWidth="320" promptText="Experience (years)" style="-fx-pref-height: 40;" />
+            </VBox>
+
+            <Button fx:id="registerBtn" maxWidth="320" onAction="#onRegisterButtonClicked" styleClass="auth-button" text="Register" />
+        </VBox>
+
+
+        <!-- Already have an account -->
+        <HBox alignment="CENTER" maxWidth="320" spacing="5">
+            <Label styleClass="auth-subtext" text="Already have an account?" />
+            <Label fx:id="loginButton" onMouseClicked="#onLoginLinkClicked" styleClass="auth-link" text="Login here" />
+        </HBox>
+    </VBox>
+</StackPane>

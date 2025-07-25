@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="334.0" prefWidth="500.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+   <AnchorPane prefHeight="7.0" prefWidth="83.0">
+      <children>
+         <Button layoutX="396.0" mnemonicParsing="false" text="Translate" />
+      </children>
+   </AnchorPane>
+
+    <!-- Email Section -->
+    <VBox prefHeight="48.0" prefWidth="421.0" spacing="5">
+        <Label style="-fx-font-weight: bold;" text="Email" />
+        <TextField prefHeight="26.0" prefWidth="241.0" promptText="Enter your email" />
+    </VBox>
+
+    <!-- Password Section -->
+    <VBox spacing="5">
+        <Label style="-fx-font-weight: bold;" text="Password" />
+        <PasswordField prefHeight="0.0" prefWidth="403.0" promptText="Enter your password" />
+    </VBox>
+
+    <!-- Role Selection -->
+    <VBox spacing="10">
+      <ComboBox prefHeight="26.0" prefWidth="145.0" promptText="Select your role" />
+        <VBox spacing="5">
+         <AnchorPane prefHeight="0.0" prefWidth="114.0">
+            <children>
+                  <Hyperlink layoutY="1.0" text="Login" />
+            </children>
+         </AnchorPane>
+         <AnchorPane prefHeight="0.0" prefWidth="0.0">
+            <children>
+                  <Hyperlink layoutY="20.0" text="Register" />
+                  <Label text="Don't have an account?" />
+            </children>
+         </AnchorPane>
+        </VBox>
+    </VBox>
+</VBox>
