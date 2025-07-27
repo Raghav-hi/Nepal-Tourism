@@ -53,10 +53,7 @@ public class RegisterController {
     @FXML
     private void handleRegister() {
         // Registration logic here
-        System.out.println("Registering...");
-        System.out.println("User Type: " + registerAsCombo.getValue());
-        if ("Guide".equals(registerAsCombo.getValue())) {
-            System.out.println("Experience: " + expField.getText());
+
         }
     }
 

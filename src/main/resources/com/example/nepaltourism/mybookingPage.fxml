@@ -8,7 +8,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="MyBookingTouristController"
+            fx:controller="com.example.nepaltourism.Controllers.MyBookingTouristController"
             style="-fx-background-color: #f5f7fa;">
 
     <!-- Top Navigation Bar -->

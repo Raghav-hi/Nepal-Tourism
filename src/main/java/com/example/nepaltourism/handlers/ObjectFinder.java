@@ -76,8 +76,6 @@ public class ObjectFinder {
             case Tourist -> {
                 Tourist tourist;
                 LANGUAGES language;
-                String nationality;
-                String emergencyNumber;
                 try(BufferedReader br=new BufferedReader(new FileReader(FileHandling.TouristFile))){
                     while((line=br.readLine())!=null){
                         if(line.trim().isEmpty()) continue;
@@ -93,9 +91,8 @@ public class ObjectFinder {
                                 case "English"-> LANGUAGES.English;
                                 default -> throw new IllegalStateException("Unexpected value: " + parts[5]);
                             };
-                            nationality=parts[6];
-                            emergencyNumber=parts[7];
-                            tourist=new Tourist(id,name,email,phoneNumber,password,language,nationality,emergencyNumber);
+
+                            tourist=new Tourist(id,name,email,phoneNumber,password,language);
                             return tourist;
                         }
                     }

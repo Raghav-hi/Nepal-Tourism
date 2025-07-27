@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="AdminController">
+            fx:controller="com.example.nepaltourism.Controllers.AdminController">
 
     <top>
         <VBox style="-fx-background-color: #2c3e50;">

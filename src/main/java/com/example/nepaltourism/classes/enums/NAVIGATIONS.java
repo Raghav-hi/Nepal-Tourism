@@ -3,6 +3,7 @@ package com.example.nepaltourism.classes.enums;
 public enum NAVIGATIONS {
     LOGINPAGE,
     REGISTERPAGE,
+    ADMINPAGE,
     TOURISTPAGE,
     GUIDEPAGE,
     MYBOOKINGPAGE,

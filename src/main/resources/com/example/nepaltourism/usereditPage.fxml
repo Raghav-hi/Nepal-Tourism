@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane style="-fx-background-color: #f5f7fa;"
-            fx:controller="TouristEditController"
+            fx:controller="com.example.nepaltourism.Controllers.TouristEditController"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1">
 

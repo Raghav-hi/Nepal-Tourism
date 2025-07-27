@@ -50,11 +50,11 @@ public class LoginController implements Initializable {
         }
         switch(usertype){
             case Admin -> {
-            if(FileHandling.authenticate(USERTYPE.Admin,email,password)){
-                System.out.println("Login Attempt: " + email + ", " + password + ", " + usertype);
-                showAlert("Success", "Login successful!");
-                return;
-            }}
+                if(FileHandling.authenticate(USERTYPE.Admin,email,password)){
+                    System.out.println("Login Attempt: " + email + ", " + password + ", " + usertype);
+                    showAlert("Success", "Login successful!");
+                    return;
+                }}
             case Guide -> {
                 if(FileHandling.authenticate(USERTYPE.Guide,email,password)){
                     System.out.println("Login Attempt: " + email + ", " + password + ", " + usertype);

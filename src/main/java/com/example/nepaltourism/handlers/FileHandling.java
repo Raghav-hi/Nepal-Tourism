@@ -38,8 +38,8 @@ public class FileHandling {
      }
 
 
-    public static String TouristFile= "tourist.cvs";
-    public static String GuideFile= "Guides.cvs";
+    public static String TouristFile= "Tourists.csv";
+    public static String GuideFile= "Guides.csv";
     public static String AdminFile= "Admins.csv";
     public static String AttractionsFile="Attractions.csv";
     public static String FestivalsFile="Festivals.csv";
@@ -139,9 +139,8 @@ public class FileHandling {
                             case "English"-> LANGUAGES.English;
                             default -> throw new IllegalStateException("Unexpected value: " + parts[5]);
                         };
-                        nationality=parts[6];
-                        emergencyNumber=parts[7];
-                        tourist=new Tourist(id,name,email,phoneNumber,password,language,nationality,emergencyNumber);
+
+                        tourist=new Tourist(id,name,email,phoneNumber,password,language);
                         users.add(tourist);
                     }
                 }
