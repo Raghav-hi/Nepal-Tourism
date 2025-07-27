@@ -1,63 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.*?>
+<?import javafx.scene.Node?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.collections.FXCollections?>
 
-<StackPane fx:id="root" styleClass="login-root" stylesheets="@css/auth.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ap.RegisterController">
+<?import java.lang.String?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.nepaltourism.RegisterController"
+            style="-fx-background-color: #f5f7fa;">
 
-    <!-- Dark overlay -->
-    <Rectangle fx:id="overlay" StackPane.alignment="CENTER" />
-
-    <VBox alignment="TOP_CENTER" maxHeight="750" maxWidth="450" spacing="18" styleClass="auth-container" StackPane.alignment="CENTER">
-        <padding>
-            <Insets bottom="30" left="40" right="40" top="30" />
-        </padding>
-
-        <!-- Logo + title -->
-        <HBox alignment="CENTER_LEFT" maxWidth="320" spacing="10">
-            <ImageView fx:id="logoImage" fitHeight="60" fitWidth="60" preserveRatio="true">
-                <Image url="@images/logo.png" />
-
-            </ImageView>
-            <Label styleClass="logo-text" text="Yatra Sathi" />
-        </HBox>
-
-        <Label styleClass="auth-title" text="Register With Us" />
-
-        <!-- Role selection -->
-        <VBox fx:id="roleSelectionBox" alignment="CENTER" spacing="10">
-            <Button fx:id="touristBtn" maxWidth="300" onAction="#onTouristSelected" styleClass="auth-button" text="Register as Tourist" />
-            <Button fx:id="guideBtn" maxWidth="300" onAction="#onGuideSelected" styleClass="auth-button-alt" text="Register as Guide" />
-        </VBox>
-
-        <!-- Form fields (initially hidden) -->
-        <VBox fx:id="formContainer" alignment="CENTER" managed="false" spacing="10" visible="false">
-
-            <TextField fx:id="nameField" maxWidth="320" promptText="Full Name" style="-fx-pref-height: 40;" />
-            <TextField fx:id="nationalityField" maxWidth="320" promptText="Nationality" style="-fx-pref-height: 40;" />
-            <TextField fx:id="emergencyContactField" maxWidth="320" promptText="Emergency Contact" style="-fx-pref-height: 40;" />
-            <TextField fx:id="phoneField" maxWidth="320" promptText="Phone Number" style="-fx-pref-height: 40;" />
-            <TextField fx:id="emailField" maxWidth="320" promptText="Email Address" style="-fx-pref-height: 40;" />
-            <PasswordField fx:id="passwordField" maxWidth="320" promptText="Password" style="-fx-pref-height: 40;" />
-            <PasswordField fx:id="confirmPasswordField" maxWidth="320" promptText="Confirm Password" style="-fx-pref-height: 40;" />
-            <ComboBox fx:id="LanguagesField" maxWidth="320" promptText="Languages Preference" style="-fx-pref-height: 40;" />
-
-            <!-- Guide only -->
-            <VBox fx:id="guideFieldsContainer" alignment="CENTER" managed="false" spacing="10" visible="false">
-                <TextField fx:id="guideExperienceField" maxWidth="320" promptText="Experience (years)" style="-fx-pref-height: 40;" />
+    <center>
+        <VBox alignment="CENTER" spacing="30" style="-fx-padding: 40;">
+            <!-- Nepal Tourism Logo/Title -->
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="Nepal Tourism" style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Text text="Create Your Account" style="-fx-font-size: 16; -fx-fill: #7f8c8d;"/>
             </VBox>
 
-            <Button fx:id="registerBtn" maxWidth="320" onAction="#onRegisterButtonClicked" styleClass="auth-button" text="Register" />
+            <!-- Registration Form Card -->
+            <VBox alignment="CENTER" spacing="15" style="-fx-padding: 30 40; -fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                <Label text="Create Your Account" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                <!-- Form Grid -->
+                <GridPane hgap="15" vgap="15" alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="150" halignment="RIGHT"/>
+                        <ColumnConstraints prefWidth="300"/>
+                    </columnConstraints>
+
+                    <!-- Full Name -->
+                    <Label text="Full name:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.rowIndex="0"/>
+                    <TextField fx:id="fullNameField" promptText="Enter your full name" style="-fx-pref-width: 300;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <!-- Phone Number -->
+                    <Label text="Phone Number:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.rowIndex="1"/>
+                    <TextField fx:id="phoneField" promptText="Enter phone number" style="-fx-pref-width: 300;" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <!-- Email -->
+                    <Label text="Email:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.rowIndex="2"/>
+                    <TextField fx:id="EmailField" promptText="Enter your email" style="-fx-pref-width: 300;" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <!-- Password -->
+                    <Label text="Password:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.rowIndex="3"/>
+                    <PasswordField fx:id="passwordField" promptText="Create a password" style="-fx-pref-width: 300;" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                    <!-- Register As -->
+                    <Label text="Register as:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.rowIndex="4"/>
+                    <ComboBox fx:id="registerAsCombo" style="-fx-pref-width: 300;" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Tourist" />
+                                <String fx:value="Guide" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+
+                    <!-- Year of Experience (Hidden by default) -->
+                    <Label text="Year of Experience:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"
+                           GridPane.rowIndex="5" fx:id="expLabel" visible="false" managed="false"/>
+                    <TextField fx:id="expField" promptText="Enter years of experience" style="-fx-pref-width: 300;"
+                               GridPane.rowIndex="5" GridPane.columnIndex="1"
+                               visible="false" managed="false"/>
+
+                    <!-- Language Preference -->
+                    <Label text="Language Preference:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.rowIndex="6"/>
+                    <ComboBox fx:id="languageCombo" style="-fx-pref-width: 300;" GridPane.rowIndex="6" GridPane.columnIndex="1">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="English" />
+                                <String fx:value="Nepali" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </GridPane>
+
+                <!-- Register Button -->
+                <Button fx:id="RegisterBtn"
+                        text="Register"
+                        onAction="#handleRegister"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16; -fx-pref-width: 300; -fx-pref-height: 40; -fx-margin: 20 0 0 0;"/>
+
+                <!-- Login Link -->
+                <HBox alignment="CENTER" spacing="5">
+                    <Label text="Already have an account?" style="-fx-text-fill: #7f8c8d;"/>
+                    <Hyperlink onAction="#handleLoginLink"
+                               text="Login here"
+                               style="-fx-text-fill: #3498db; -fx-font-weight: bold; -fx-padding: 0; -fx-underline: true; -fx-cursor: hand;"/>
+                </HBox>
+            </VBox>
         </VBox>
+    </center>
 
-
-        <!-- Already have an account -->
-        <HBox alignment="CENTER" maxWidth="320" spacing="5">
-            <Label styleClass="auth-subtext" text="Already have an account?" />
-            <Label fx:id="loginButton" onMouseClicked="#onLoginLinkClicked" styleClass="auth-link" text="Login here" />
+    <!-- Footer -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 15;">
+            <Label text="© 2025 Nepal Tourism. All rights reserved." style="-fx-text-fill: #ecf0f1;"/>
         </HBox>
-    </VBox>
-</StackPane>
+    </bottom>
+</BorderPane>

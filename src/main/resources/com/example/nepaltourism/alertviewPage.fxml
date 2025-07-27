@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="AlertViewController">
+
+    <top>
+        <VBox style="-fx-background-color: #2c3e50;">
+            <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1a252f; -fx-padding: 10;">
+                <!-- Use placeholder image for Scene Builder -->
+                <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+                    <Image url="https://via.placeholder.com/40" />
+                </ImageView>
+                <Label text="Nepal Tourism" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
+                <Button text="Home" style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;"/>
+                <Button text="Attractions" style="-fx-text-fill: white; -fx-background-color: transparent;"/>
+                <Button text="My Bookings" style="-fx-text-fill: white; -fx-background-color: transparent;"/>
+                <Button text="User" style="-fx-text-fill: white; -fx-background-color: transparent;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Logout" style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 30;">
+            <Label text="Alert Messages" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <!-- Alert Messages Container -->
+            <VBox alignment="TOP_CENTER" spacing="15" style="-fx-padding: 10;">
+                <!-- Heavy Rainfall Alert -->
+                <VBox style="-fx-background-color: #f8d7da; -fx-background-radius: 8; -fx-padding: 15; -fx-border-color: #721c24; -fx-border-width: 1; -fx-border-radius: 8;"
+                      alignment="TOP_LEFT">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="❗" style="-fx-font-size: 24;"/>
+                        <Label text="Heavy Rainfall Alert" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #721c24;"/>
+                    </HBox>
+                    <Text text="Heavy Rain fall till 28th July" style="-fx-font-size: 16; -fx-fill: #721c24; -fx-padding: 5 0 0 30;"/>
+                    <Text text="Affected Areas: Kathmandu, Pokhara, Chitwan" style="-fx-font-size: 14; -fx-fill: #721c24; -fx-padding: 0 0 0 30;"/>
+                </VBox>
+
+                <!-- Polluted Weather Alert -->
+                <VBox style="-fx-background-color: #fff3cd; -fx-background-radius: 8; -fx-padding: 15; -fx-border-color: #856404; -fx-border-width: 1; -fx-border-radius: 8;"
+                      alignment="TOP_LEFT">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="⚠️" style="-fx-font-size: 24;"/>
+                        <Label text="Weather Alert" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #856404;"/>
+                    </HBox>
+                    <Text text="Polluted weather till 27th July" style="-fx-font-size: 16; -fx-fill: #856404; -fx-padding: 5 0 0 30;"/>
+                    <Text text="Affected Areas: Kathmandu Valley, Birgunj" style="-fx-font-size: 14; -fx-fill: #856404; -fx-padding: 0 0 0 30;"/>
+                </VBox>
+
+                <!-- Empty State -->
+                <VBox alignment="CENTER" style="-fx-padding: 20;">
+                    <Label text="No more alerts at this time" style="-fx-font-size: 16; -fx-text-fill: #7f8c8d;"/>
+                </VBox>
+            </VBox>
+        </VBox>
+    </center>
+
+    <!-- Optional Footer -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 10;">
+            <Label text="© 2025 Nepal Tourism Board. All rights reserved." style="-fx-text-fill: #ecf0f1;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="FestivalDiscountViewController">
+
+    <top>
+        <VBox style="-fx-background-color: #2c3e50;">
+            <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1a252f; -fx-padding: 10;">
+                <!-- Use placeholder image for Scene Builder -->
+                <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+                    <Image url="https://via.placeholder.com/40" />
+                </ImageView>
+                <Label text="Nepal Tourism" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
+                <Button text="Home" style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;"/>
+                <Button text="Attractions" style="-fx-text-fill: white; -fx-background-color: transparent;"/>
+                <Button text="My Bookings" style="-fx-text-fill: white; -fx-background-color: transparent;"/>
+                <Button text="User" style="-fx-text-fill: white; -fx-background-color: transparent;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Logout" style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 30;">
+            <Label text="Festival Discounts" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <!-- Discount Cards Container -->
+            <VBox alignment="TOP_CENTER" spacing="15" style="-fx-padding: 10;">
+                <!-- Dashain Discount Card -->
+                <HBox style="-fx-background-color: #d4e6f1; -fx-background-radius: 8; -fx-padding: 15; -fx-border-color: #3498db; -fx-border-width: 1; -fx-border-radius: 8;"
+                      alignment="CENTER" spacing="20">
+                    <VBox alignment="CENTER_LEFT" spacing="5">
+                        <Label text="Dashain Festival" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                        <Text text="Special 20% discount on all tours!" style="-fx-font-size: 16; -fx-fill: #2c3e50;"/>
+                        <Text text="Valid: Oct 15 - Oct 25, 2023" style="-fx-font-size: 14; -fx-fill: #2c3e50;"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="Choose" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                </HBox>
+
+                <!-- Tihar Discount Card -->
+                <HBox style="-fx-background-color: #d5f5e3; -fx-background-radius: 8; -fx-padding: 15; -fx-border-color: #2ecc71; -fx-border-width: 1; -fx-border-radius: 8;"
+                      alignment="CENTER" spacing="20">
+                    <VBox alignment="CENTER_LEFT" spacing="5">
+                        <Label text="Tihar Festival" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                        <Text text="15% discount + free cultural experience!" style="-fx-font-size: 16; -fx-fill: #2c3e50;"/>
+                        <Text text="Valid: Nov 8 - Nov 12, 2023" style="-fx-font-size: 14; -fx-fill: #2c3e50;"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="Choose" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                </HBox>
+            </VBox>
+
+            <!-- More Discounts Coming Soon -->
+            <VBox alignment="CENTER" style="-fx-padding: 20;">
+                <Label text="More festival discounts coming soon..." style="-fx-font-size: 16; -fx-text-fill: #7f8c8d;"/>
+            </VBox>
+        </VBox>
+    </center>
+
+    <!-- Optional Footer -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 10;">
+            <Label text="Celebrate Nepal's rich cultural heritage with our special festival offers!" style="-fx-text-fill: #ecf0f1;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

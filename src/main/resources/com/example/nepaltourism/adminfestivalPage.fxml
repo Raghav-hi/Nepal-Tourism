@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.image.ImageView?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.nepaltourism.adminSubControllers.AdminFestivalController">
+    <!-- Top Navigation Bar -->
+    <top>
+        <VBox style="-fx-background-color: #2c3e50;">
+            <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1a252f; -fx-padding: 10;">
+                <!-- Use placeholder image for Scene Builder -->
+                <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+                    <Image url="https://via.placeholder.com/40" />
+                </ImageView>
+                <Label style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;" text="Nepal Tourism" />
+            </HBox>
+
+            <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
+                <Button style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" text="Home" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Attractions" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Bookings" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Tourists" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Guides" />
+                <Button style="-fx-text-fill: white; -fx-background-color:transparent;" text="User" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" text="Logout" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center Content Area -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 20;">
+            <Text text="Festival Management" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+            <!-- Add Festival Button -->
+            <HBox alignment="CENTER_RIGHT">
+                <Button fx:id="addFestivalBtn" text="Add Festival"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- Festival Table -->
+            <TableView fx:id="festivalTable">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colName" text="Name" prefWidth="150"/>
+                    <TableColumn fx:id="colStartDate" text="Start Date" prefWidth="120"/>
+                    <TableColumn fx:id="colEndDate" text="End Date" prefWidth="120"/>
+                    <TableColumn fx:id="colDiscount" text="Discount" prefWidth="100"/>
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

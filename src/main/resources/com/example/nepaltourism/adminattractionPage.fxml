@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.collections.FXCollections?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.nepaltourism.adminSubControllers.AdminAttractionController">
+            style="-fx-background-color: #f5f7fa;">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <VBox style="-fx-background-color: #2c3e50;">
+            <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1a252f; -fx-padding: 10;">
+                <!-- Use placeholder image for Scene Builder -->
+                <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+                    <Image url="https://via.placeholder.com/40" />
+                </ImageView>
+                <Label style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;" text="Nepal Tourism" />
+            </HBox>
+
+            <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Home" />
+                <Button style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" text="Attractions" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Bookings" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Tourists" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Guides" />
+                <Button style="-fx-text-fill: white; -fx-background-color:transparent;" text="User" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" text="Logout" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="30" style="-fx-padding: 30;">
+            <!-- Page Title -->
+            <Label text="Attractions Management" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <!-- Add Attraction Section -->
+            <VBox alignment="TOP_CENTER" spacing="20">
+                <Label text="Add Attraction" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                <GridPane hgap="15" vgap="15" style="-fx-padding: 20; -fx-background-color: white; -fx-background-radius: 10;">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="100"/>
+                        <ColumnConstraints prefWidth="300"/>
+                    </columnConstraints>
+
+                    <Label text="Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="0"/>
+                    <TextField promptText="Enter attraction name" style="-fx-pref-width: 300;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Description:" style="-fx-font-weight: bold;" GridPane.rowIndex="1"/>
+                    <TextArea promptText="Enter attraction description" style="-fx-pref-width: 300; -fx-pref-height: 100;" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.rowIndex="2" GridPane.columnIndex="1" spacing="10">
+                        <Button text="Cancel" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                        <Button text="Add Attraction" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                    </HBox>
+                </GridPane>
+            </VBox>
+
+            <!-- Attractions Table -->
+            <VBox spacing="20">
+                <Label text="Existing Attractions" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+                <TableView style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+                           fx:id="attractionsTable" prefHeight="300">
+                    <columns>
+                        <TableColumn text="ID" style="-fx-font-weight: bold;" prefWidth="50">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Name" style="-fx-font-weight: bold;" prefWidth="200">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="name" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Description" style="-fx-font-weight: bold;" prefWidth="400">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="description" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn text="Actions" style="-fx-font-weight: bold;" prefWidth="150">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="actions" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <Attraction id="1" name="Mustang" description="Experience the 'Forbidden Kingdom' with its Tibetan-influenced culture and ancient monasteries." />
+                            <Attraction id="2" name="Pokhara" description="Enjoy stunning views of the Annapurna range, serene lakes, and thrilling adventure activities." />
+                            <Attraction id="3" name="Kathmandu" description="Explore the vibrant capital city with its rich history, temples, and bustling markets." />
+                        </FXCollections>
+                    </items>
+                </TableView>
+            </VBox>
+        </VBox>
+    </center>
+
+    <!-- Footer -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 15;">
+            <Label text="Admin Attractions Management" style="-fx-text-fill: #ecf0f1;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,16 @@
+package com.example.nepaltourism.classes.enums;
+
+public enum NAVIGATIONS {
+    LOGINPAGE,
+    REGISTERPAGE,
+    TOURISTPAGE,
+    GUIDEPAGE,
+    MYBOOKINGPAGE,
+    ATRRACTIONPAGE,
+    GUIDEUSERPAGE,
+    TOURISTUSERPAGE,
+    FESTIVALPAGE,
+    ALEARTPAGE,
+    BOOKINGPAGE;
+
+}

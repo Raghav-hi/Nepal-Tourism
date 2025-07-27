@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GuideController">
+
+    <top>
+        <VBox style="-fx-background-color: #2c3e50;">
+            <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1a252f; -fx-padding: 10;">
+                <!-- Use placeholder image for Scene Builder -->
+                <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
+                    <Image url="https://via.placeholder.com/40" />
+                </ImageView>
+                <Label style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;" text="Nepal Tourism" />
+            </HBox>
+
+            <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
+                <Button style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" text="Home" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="My Bookings" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="User" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" text="Logout" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <children>
+                    <Button layoutX="166.0" layoutY="22.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: red; -fx-text-fill: white;" text="Alert message!!" />
+                </children>
+            </AnchorPane>
+        </VBox>
+
+    </center>
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 10;">
+            <Label style="-fx-text-fill: #ecf0f1;" text="© 2025 Nepal Tourism Board. All rights reserved." />
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,7 @@
+Admin- id, name, email , phone number ,password
+Tourist- id, name, email , phone number ,password
+Guide- id, name, email , phone number ,password
+Attractions- id, name, location, description
+Festivals-id,name,start Date, end Date, discount
+Booking-bid, uid, gid, aid, date, discount = 0 default, cancelled?, fid
+Alerts-id, message, months active
