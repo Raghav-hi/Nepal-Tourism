@@ -35,7 +35,13 @@
 
     <!-- Main Content -->
     <center>
+        <ScrollPane fitToWidth="true" vbarPolicy="ALWAYS" hbarPolicy="NEVER" styleClass="scroll-pane">
+            <VBox>
+                <FlowPane fx:id="bookingContainer" hgap="20" vgap="20"  prefWrapLength="900"
+                          alignment="TOP_LEFT" />
 
+            </VBox>
+        </ScrollPane>
     </center>
 
     <!-- Footer -->

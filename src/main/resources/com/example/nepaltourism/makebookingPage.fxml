@@ -11,7 +11,7 @@
 <BorderPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.nepaltourism.Controllers.MakeBookingController">
 
     <top>
-        <VBox style="-fx-background-color: #2c3e50;">
+        <VBox style="-fx-background-color: #2c3e50;" fx:id="vbox">
             <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1a252f; -fx-padding: 10;">
                 <!-- Use placeholder image for Scene Builder -->
                 <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
@@ -21,12 +21,12 @@
             </HBox>
 
             <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
-                <Button text="Home" style="-fx-text-fill: white; -fx-background-color: transparent;"/>
-                <Button text="Attractions" style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;"/>
-                <Button text="My Bookings" style="-fx-text-fill: white; -fx-background-color: transparent;"/>
-                <Button text="User" style="-fx-text-fill: white; -fx-background-color: transparent;"/>
+                <Button text="Home" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goHome"/>
+                <Button text="Attractions" style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" onAction="#goAttraction"/>
+                <Button text="My Bookings" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goBookings"/>
+                <Button text="User" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goUserEdit"/>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Button text="Logout" style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;"/>
+                <Button text="Logout" style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" onAction="#onLogout"/>
             </HBox>
         </VBox>
     </top>
@@ -39,8 +39,9 @@
             <HBox alignment="CENTER" spacing="20">
 
                 <VBox alignment="CENTER_LEFT" spacing="10">
-                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Mustang" />
-                    <Text style="-fx-font-size: 14; -fx-fill: #7f8c8d;" text="Experience the 'Forbidden Kingdom' with its Tibetan-influenced culture, ancient monasteries, and dramatic landscapes." wrappingWidth="400" />
+                    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Mustang" fx:id="attractionNameLabel" />
+                    <Text style="-fx-font-size: 14; -fx-fill: #7f8c8d;" text="Experience the 'Forbidden Kingdom' with its Tibetan-influenced culture, ancient monasteries, and dramatic landscapes." wrappingWidth="400"
+                    fx:id="attractionDescLabel"/>
                 </VBox>
             </HBox>
 
@@ -53,21 +54,14 @@
 
                 <!-- Row 0: Booking Date -->
                 <Label style="-fx-font-weight: bold;" text="Booking Date:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <DatePicker style="-fx-pref-width: 200;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <DatePicker style="-fx-pref-width: 200;" GridPane.columnIndex="1" GridPane.rowIndex="0"  fx:id="bookingDatePicker"/>
 
                 <!-- Row 1: Festival Discounts -->
                 <Label style="-fx-font-weight: bold;" text="Festival Discounts:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <ComboBox fx:id="festivalComboBox" prefWidth="200">
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="No Festival Discount" />
-                                <String fx:value="Dashain Festival (20% off)" />
-                                <String fx:value="Tihar Festival (15% off)" />
-                            </FXCollections>
-                        </items>
+
                     </ComboBox>
-                    <Button style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;" text="Choose" />
                 </HBox>
 
                 <!-- Row 2: Discount Rate -->
@@ -76,8 +70,8 @@
 
                 <!-- Row 3: Action Buttons -->
                 <HBox spacing="20" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                    <Button style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;" text="Cancel" />
-                    <Button style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;" text="Submit" />
+                    <Button style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;" text="Cancel" onAction="#goAttraction"/>
+                    <Button style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;" text="Submit" onAction="#onSubmit"/>
                 </HBox>
             <rowConstraints>
                <RowConstraints />

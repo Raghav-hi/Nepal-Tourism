@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" prefWidth="800"
+            prefHeight="400" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="com.example.nepaltourism.adminSubControllers.subBookingGuideAssignController">
+    <content>
+        <TableView fx:id="guideTable" styleClass="data-table" prefWidth="800">
+            <columns>
+                <TableColumn text="ID" fx:id="idColumn" styleClass="column-header" prefWidth="120"/>
+                <TableColumn text="Name" fx:id="nameColumn" styleClass="column-header" prefWidth="220"/>
+                <TableColumn text="Email" fx:id="emailColumn" styleClass="column-header" prefWidth="220"/>
+                <TableColumn text="Phone" fx:id="phoneNumberColumn" styleClass="column-header" prefWidth="180"/>
+                <TableColumn text="Language" fx:id="languagePrefColumn" styleClass="column-header" prefWidth="100"/>
+                <TableColumn text="Years of Experience" fx:id="yearsOfExperience" styleClass="column-header" prefWidth="120"/>
+                <TableColumn text="Assign" fx:id="assignColumn" styleClass="column-header" prefWidth="120"/>
+            </columns>
+        </TableView>
+    </content>
+</ScrollPane>

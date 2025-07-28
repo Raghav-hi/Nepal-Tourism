@@ -145,18 +145,12 @@ public class profileEditGuide implements Initializable {
         Navigator.Navigate(NAVIGATIONS.LOGINPAGE,(Stage) nameField.getScene().getWindow());
     }
     public void goHome(ActionEvent actionEvent) throws IOException{
-        Navigator.Navigate(NAVIGATIONS.TOURISTPAGE,(Stage) vbox.getScene().getWindow());
+        Navigator.Navigate(NAVIGATIONS.GUIDEPAGE,(Stage) vbox.getScene().getWindow());
     }
 
-    public void goAttraction(ActionEvent actionEvent) throws IOException{
-        Navigator.Navigate(NAVIGATIONS.ATRRACTIONPAGE,(Stage) vbox.getScene().getWindow());
-    }
 
     public void goBookings(ActionEvent actionEvent) throws IOException{
-        Navigator.Navigate(NAVIGATIONS.MYBOOKINGPAGE,(Stage) vbox.getScene().getWindow());
+        Navigator.Navigate(NAVIGATIONS.GUIDEMYBOOKINGPAGE,(Stage) vbox.getScene().getWindow());
     }
 
-    public void goUserEdit(ActionEvent actionEvent) throws IOException{
-        Navigator.Navigate(NAVIGATIONS.TOURISTUSERPAGE,(Stage)vbox.getScene().getWindow());
-    }
 }

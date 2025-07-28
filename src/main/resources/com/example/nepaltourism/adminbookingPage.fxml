@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.nepaltourism.adminSubControllers.AdminBookingController">
+            fx:controller="com.example.nepaltourism.adminSubControllers.AdminBookingController" fx:id="mainpane">
     <top>
         <VBox style="-fx-background-color: #2c3e50;" fx:id="vbox">
             <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1a252f; -fx-padding: 10;">
@@ -28,24 +28,25 @@
             </HBox>
         </VBox>
     </top>
-
-    <center>
-        <VBox spacing="20" style="-fx-padding: 20;">
-            <Text text="Booking Management" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
-
-            <TableView fx:id="bookingTable">
+<center>
+    <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" prefWidth="800" prefHeight="400">
+        <content>
+            <TableView fx:id="bookingsTable" styleClass="data-table" prefWidth="800">
                 <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-                    <TableColumn fx:id="colUm" text="UM" prefWidth="50"/>
-                    <TableColumn fx:id="colGid" text="Gid" prefWidth="50"/>
-                    <TableColumn fx:id="colAm" text="AM" prefWidth="50"/>
-                    <TableColumn fx:id="colDate" text="Date" prefWidth="100"/>
-                    <TableColumn fx:id="colDiscount" text="Discount" prefWidth="75"/>
-                    <TableColumn fx:id="colCancelled" text="Cancelled?" prefWidth="75"/>
-                    <TableColumn fx:id="colRd" text="Rd" prefWidth="50"/>
-                    <TableColumn fx:id="colActions" text="Actions" prefWidth="150"/>
+                    <TableColumn text="ID" fx:id="idColumn" styleClass="column-header" prefWidth="100"/>
+                    <TableColumn text="Uid" fx:id="uidColumn" styleClass="column-header" prefWidth="100"/>
+                    <TableColumn text="Gid" fx:id="gidColumn" styleClass="column-header" prefWidth="100"/>
+                    <TableColumn text="Aid" fx:id="aidColumn" styleClass="column-header" prefWidth="100"/>
+                    <TableColumn text="Date" fx:id="dateColumn" styleClass="column-header" prefWidth="180"/>
+                    <TableColumn text="Discount" fx:id="discountColumn" styleClass="column-header" prefWidth="160"/>
+                    <TableColumn text="Cancelled?" fx:id="cancelledColumn" styleClass="column-header" prefWidth="160"/>
+                    <TableColumn text="fid" fx:id="fidColumn" styleClass="column-header" prefWidth="100"/>
+
+                    <TableColumn text="Actions" fx:id="actionsColumn" styleClass="column-header" prefWidth="200"/>
                 </columns>
             </TableView>
-        </VBox>
-    </center>
+        </content>
+    </ScrollPane>
+</center>
+
 </BorderPane>

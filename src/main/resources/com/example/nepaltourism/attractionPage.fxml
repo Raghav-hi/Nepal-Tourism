@@ -31,7 +31,11 @@
     </top>
 
     <center>
-
+        <ScrollPane fitToWidth="true" vbarPolicy="ALWAYS" hbarPolicy="NEVER" styleClass="scroll-pane">
+            <VBox>
+                <FlowPane fx:id="attractionContainer" hgap="20" vgap="20" prefWrapLength="900" alignment="TOP_LEFT" />
+            </VBox>
+        </ScrollPane>
     </center>
     <bottom>
         <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 10;">
