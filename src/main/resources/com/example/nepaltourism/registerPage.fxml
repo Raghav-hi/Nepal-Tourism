@@ -47,7 +47,7 @@
 
                     <!-- Password -->
                     <Label text="Password:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.rowIndex="3"/>
-                    <PasswordField fx:id="passwordField" promptText="Create a password" style="-fx-pref-width: 300;" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    <TextField fx:id="passwordField" promptText="Create a password" style="-fx-pref-width: 300;" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
                     <!-- Register As -->
                     <Label text="Register as:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.rowIndex="4"/>
@@ -70,13 +70,9 @@
                     <!-- Language Preference -->
                     <Label text="Language Preference:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" GridPane.rowIndex="6"/>
                     <ComboBox fx:id="languageCombo" style="-fx-pref-width: 300;" GridPane.rowIndex="6" GridPane.columnIndex="1">
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <String fx:value="English" />
-                                <String fx:value="Nepali" />
-                            </FXCollections>
-                        </items>
+
                     </ComboBox>
+
                 </GridPane>
 
                 <!-- Register Button -->

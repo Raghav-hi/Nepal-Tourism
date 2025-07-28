@@ -1,5 +1,7 @@
 package com.example.nepaltourism;
 
+import com.example.nepaltourism.Controllers.AdminController;
+import com.example.nepaltourism.handlers.CacheHandler;
 import com.example.nepaltourism.handlers.FileHandling;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +23,8 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) throws IOException {
         FileHandling.init();
+        CacheHandler.initCache();
+
         launch();
     }
 }

@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
@@ -45,8 +46,10 @@ public class FileHandling {
     public static String FestivalsFile="Festivals.csv";
     public static String BookingsFile="Bookings.csv";
     public static String AlertsFile="Alerts.csv";
+    public static String tempDir="temp";
 
     public static void init() throws IOException {
+        Files.createDirectories(Path.of(tempDir));
         List<File> files = Arrays.asList(
                 new File(TouristFile),
                 new File(GuideFile),
@@ -375,7 +378,7 @@ public class FileHandling {
             try(BufferedReader br=new BufferedReader(new FileReader(typeFile))){
                 // index 2, 3, 4 email, phone, password
                 while((line=br.readLine())!=null){
-                    if(line.trim().isEmpty()) return false;
+                    if(line.trim().isEmpty()) continue;
                     parts=line.split(",");
                     if(parts[2].equals(username)){
                         return parts[4].equals(password);
@@ -388,6 +391,35 @@ public class FileHandling {
 
         return false;
     }
+
+    public static boolean emailExists(USERTYPE type, String email){
+        String line;
+        String[] parts;
+        String typeFile=
+                switch(type){
+                    case Tourist ->TouristFile;
+                    case Admin -> AdminFile;
+                    case Guide ->GuideFile;
+                };
+
+        if(isEmail(email)){
+            try(BufferedReader br=new BufferedReader(new FileReader(typeFile))){
+                // index 2, 3, 4 email, phone, password
+                while((line=br.readLine())!=null){
+                    if(line.trim().isEmpty()) continue;
+                    parts=line.split(",");
+                    if(parts[2].equals(email)){
+                        return true;
+                    }
+                }
+            } catch (IOException e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+
     public static List<Booking> AllBookings() throws IOException{
         List<Booking> bookings=new ArrayList<>();
         File file=new File(BookingsFile);
@@ -510,7 +542,7 @@ public class FileHandling {
                 id=Integer.parseInt(parts[0]);
                 name=parts[1];
                 location=parts[2];
-                description=parts[5];
+                description=parts[3];
                 attraction=new Attraction(id,name,location,description);
                 attractions.add(attraction);
             }
@@ -683,8 +715,8 @@ public class FileHandling {
                 if (line.trim().isEmpty()) continue;
                 parts=line.split(",");
                 id=Integer.parseInt(parts[0]);
-                message=parts[2];
-                monthsActive=Integer.parseInt(parts[3]);
+                message=parts[1];
+                monthsActive=Integer.parseInt(parts[2]);
                 alert=new Alerts(id,message,monthsActive);
                 alerts.add(alert);
             }

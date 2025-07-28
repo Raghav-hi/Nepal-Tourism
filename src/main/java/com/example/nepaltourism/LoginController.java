@@ -24,6 +24,7 @@ public class LoginController implements Initializable {
     public TextField EmailField;
     @FXML
     public TextField PasswordField;
+    @FXML
     public Button loginBtn;
 
     @Override
@@ -32,7 +33,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    public void onLoginClick() {
+    public void onLoginClick() throws IOException {
         String email = EmailField.getText().trim();
         String password = PasswordField.getText().trim();
         USERTYPE usertype = UserSelectComboBox.getValue();
@@ -52,20 +53,20 @@ public class LoginController implements Initializable {
             case Admin -> {
                 if(FileHandling.authenticate(USERTYPE.Admin,email,password)){
                     System.out.println("Login Attempt: " + email + ", " + password + ", " + usertype);
-                    showAlert("Success", "Login successful!");
+                    Navigator.Navigate(NAVIGATIONS.ADMINPAGE,(Stage) loginBtn.getScene().getWindow());
                     return;
                 }}
             case Guide -> {
                 if(FileHandling.authenticate(USERTYPE.Guide,email,password)){
                     System.out.println("Login Attempt: " + email + ", " + password + ", " + usertype);
-                    showAlert("Success", "Login successful!");
+                    Navigator.Navigate(NAVIGATIONS.GUIDEPAGE,(Stage) loginBtn.getScene().getWindow());
                     return;
                 }
             }
             case Tourist ->{
                 if(FileHandling.authenticate(USERTYPE.Tourist,email,password)){
                     System.out.println("Login Attempt: " + email + ", " + password + ", " + usertype);
-                    showAlert("Success", "Login successful!");
+                    Navigator.Navigate(NAVIGATIONS.TOURISTPAGE,(Stage) loginBtn.getScene().getWindow());
                     return;
                 }
             }
@@ -82,6 +83,8 @@ public class LoginController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+
 
     public void onRegisterClick(ActionEvent actionEvent) throws IOException {
         Navigator.Navigate(NAVIGATIONS.REGISTERPAGE,(Stage)EmailField.getScene().getWindow());

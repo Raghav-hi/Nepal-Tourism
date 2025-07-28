@@ -148,7 +148,7 @@ public class ObjectFinder {
                 id=Integer.parseInt(parts[0]);
                 name=parts[1];
                 location=parts[2];
-                description=parts[5];
+                description=parts[3];
                 if(id==aid){
                     attraction=new Attraction(id,name,location,description);
                     return attraction;
@@ -204,8 +204,8 @@ public class ObjectFinder {
                 if (line.trim().isEmpty()) continue;
                 parts=line.split(",");
                 id=Integer.parseInt(parts[0]);
-                message=parts[2];
-                monthsActive=Integer.parseInt(parts[3]);
+                message=parts[1];
+                monthsActive=Integer.parseInt(parts[2]);
                 alert=new Alerts(id,message,monthsActive);
                 return alert;
                 }

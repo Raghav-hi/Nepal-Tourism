@@ -10,11 +10,12 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.chart.PieChart?>
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.nepaltourism.Controllers.AdminController">
 
     <top>
-        <VBox style="-fx-background-color: #2c3e50;">
+        <VBox style="-fx-background-color: #2c3e50;" fx:id="vbox">
             <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1a252f; -fx-padding: 10;">
                 <!-- Use placeholder image for Scene Builder -->
                 <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
@@ -24,28 +25,33 @@
             </HBox>
 
             <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
-                <Button style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" text="Home" />
-                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Attractions" />
-                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Bookings" />
-                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Tourists" />
-                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Guides" />
-                <Button style="-fx-text-fill: white; -fx-background-color:transparent;" text="User" />
+                <Button fx:id="homebtn" onAction="#onClickhomebtn" style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" text="Home" />
+                <Button fx:id="attractionsbtn" onAction="#onClickattractionsbtn" style="-fx-text-fill: white; -fx-background-color: transparent;" text="Attractions" />
+                <Button fx:id="bookingsbtn" onAction="#onClickbookingsbtn" style="-fx-text-fill: white; -fx-background-color: transparent;" text="Bookings" />
+                <Button fx:id="touristbtn" onAction="#onClicktouristbtn" style="-fx-text-fill: white; -fx-background-color: transparent;" text="Tourists" />
+                <Button fx:id="guidesbtn" onAction="#onClickguidesbtn" style="-fx-text-fill: white; -fx-background-color: transparent;" text="Guides" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" text="Logout" />
+                <Button fx:id="logoutbtn" onAction="#onClickLogout" style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" text="Logout" />
             </HBox>
         </VBox>
     </top>
 
     <center>
-        <VBox spacing="10">
+        <VBox spacing="10" alignment="TOP_CENTER">
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                 <children>
-                    <Button layoutX="32.0" layoutY="27.0" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: orange; -fx-text-fill: black;" text="Festival" />
-                    <Button layoutX="239.0" layoutY="27.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: red; -fx-text-fill: white;" text="Alert" />
+                    <Button fx:id="festivalbtn" onAction="#onClickfestivalbtn" layoutX="32.0" layoutY="27.0"
+                            prefHeight="26.0" prefWidth="146.0"
+                            style="-fx-background-color: orange; -fx-text-fill: black;" text="Festival"/>
+                    <Button fx:id="alertbtn" onAction="#onClickalertbtn" layoutX="239.0" layoutY="27.0"
+                            prefHeight="26.0" prefWidth="150.0"
+                            style="-fx-background-color: red; -fx-text-fill: white;" text="Alert"/>
                 </children>
             </AnchorPane>
-        </VBox>
 
+            <!-- PieChart added here -->
+            <PieChart fx:id="statsPieChart" prefHeight="300.0" prefWidth="500.0" title="Statistics Overview" />
+        </VBox>
     </center>
     <bottom>
         <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 10;">

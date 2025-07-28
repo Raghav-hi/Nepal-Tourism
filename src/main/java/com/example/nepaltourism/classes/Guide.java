@@ -11,7 +11,7 @@ public class Guide extends User {
         super(id, name, email, phone, password);
         this.languageSpoken = languageSpoken;
         this.yearsExperience = yearsExperience;
-        this.availability = false;
+        this.availability = true;
     }
 
     public int getYearsOfExperience() {

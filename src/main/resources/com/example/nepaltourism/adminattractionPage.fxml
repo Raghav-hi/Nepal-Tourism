@@ -8,14 +8,15 @@
 
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.collections.FXCollections?>
+<?import com.example.nepaltourism.classes.Attraction?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.nepaltourism.adminSubControllers.AdminAttractionController">
-            style="-fx-background-color: #f5f7fa;">
+
 
     <!-- Top Navigation Bar -->
     <top>
-        <VBox style="-fx-background-color: #2c3e50;">
+        <VBox style="-fx-background-color: #2c3e50;" fx:id="vbox">
             <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1a252f; -fx-padding: 10;">
                 <!-- Use placeholder image for Scene Builder -->
                 <ImageView fitHeight="40" fitWidth="40" preserveRatio="true">
@@ -25,12 +26,11 @@
             </HBox>
 
             <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
-                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Home" />
-                <Button style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" text="Attractions" />
-                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Bookings" />
-                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Tourists" />
-                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Guides" />
-                <Button style="-fx-text-fill: white; -fx-background-color:transparent;" text="User" />
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Home" onAction="#onHome"/>
+                <Button style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" text="Attractions" onAction="#onAttractions"/>
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Bookings" onAction="#onBookings"/>
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Tourists" onAction="#onTourists"/>
+                <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Guides" onAction="#onGuides"/>
                 <Region HBox.hgrow="ALWAYS" />
                 <Button style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" text="Logout" />
             </HBox>
@@ -52,16 +52,20 @@
                         <ColumnConstraints prefWidth="300"/>
                     </columnConstraints>
 
+                    <!-- Name Field -->
                     <Label text="Name:" style="-fx-font-weight: bold;" GridPane.rowIndex="0"/>
-                    <TextField promptText="Enter attraction name" style="-fx-pref-width: 300;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                    <TextField fx:id="nameField" promptText="Enter attraction name" style="-fx-pref-width: 300;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
+                    <!-- Description Field -->
                     <Label text="Description:" style="-fx-font-weight: bold;" GridPane.rowIndex="1"/>
-                    <TextArea promptText="Enter attraction description" style="-fx-pref-width: 300; -fx-pref-height: 100;" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    <TextArea fx:id="descriptionArea" promptText="Enter attraction description" style="-fx-pref-width: 300; -fx-pref-height: 100;" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
+                    <!-- Buttons -->
                     <HBox alignment="CENTER_RIGHT" GridPane.rowIndex="2" GridPane.columnIndex="1" spacing="10">
                         <Button text="Cancel" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
-                        <Button text="Add Attraction" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                        <Button text="Add Attraction" onAction="#onAddAttraction" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
                     </HBox>
+
                 </GridPane>
             </VBox>
 
@@ -72,34 +76,26 @@
                 <TableView style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
                            fx:id="attractionsTable" prefHeight="300">
                     <columns>
-                        <TableColumn text="ID" style="-fx-font-weight: bold;" prefWidth="50">
+                        <TableColumn text="ID" style="-fx-font-weight: bold;" prefWidth="50" fx:id="idColumn">
                             <cellValueFactory>
                                 <PropertyValueFactory property="id" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="Name" style="-fx-font-weight: bold;" prefWidth="200">
+                        <TableColumn text="Name" style="-fx-font-weight: bold;" prefWidth="200" fx:id="nameColumn">
                             <cellValueFactory>
                                 <PropertyValueFactory property="name" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="Description" style="-fx-font-weight: bold;" prefWidth="400">
+                        <TableColumn text="Description" style="-fx-font-weight: bold;" prefWidth="400" fx:id="descriptionColumn">
                             <cellValueFactory>
                                 <PropertyValueFactory property="description" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="Actions" style="-fx-font-weight: bold;" prefWidth="150">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="actions" />
-                            </cellValueFactory>
+                        <TableColumn text="Actions" style="-fx-font-weight: bold;" prefWidth="150" fx:id="actionsColumn">
+
                         </TableColumn>
                     </columns>
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <Attraction id="1" name="Mustang" description="Experience the 'Forbidden Kingdom' with its Tibetan-influenced culture and ancient monasteries." />
-                            <Attraction id="2" name="Pokhara" description="Enjoy stunning views of the Annapurna range, serene lakes, and thrilling adventure activities." />
-                            <Attraction id="3" name="Kathmandu" description="Explore the vibrant capital city with its rich history, temples, and bustling markets." />
-                        </FXCollections>
-                    </items>
+
                 </TableView>
             </VBox>
         </VBox>

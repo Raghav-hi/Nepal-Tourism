@@ -36,7 +36,7 @@
         <VBox spacing="10">
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                 <children>
-                    <Button layoutX="166.0" layoutY="22.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: red; -fx-text-fill: white;" text="Alert message!!" />
+                    <Button fx:id="alertbtn" layoutX="166.0" layoutY="22.0" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: red; -fx-text-fill: white;" text="Alert message!!" />
                 </children>
             </AnchorPane>
         </VBox>
