@@ -24,7 +24,7 @@
                 <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Tourists" onAction="#onTourists"/>
                 <Button style="-fx-text-fill: white; -fx-background-color: transparent;" text="Guides" onAction="#onGuides"/>
                 <Region HBox.hgrow="ALWAYS" />
-                <Button style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" text="Logout" />
+                <Button style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" text="Logout" onAction="#onClickLogout"/>
             </HBox>
         </VBox>
     </top>

@@ -74,7 +74,7 @@ public class  RegisterController implements Initializable {
     }
 
     @FXML
-    private void handleRegister() {
+    private void handleRegister() throws IOException {
         USERTYPE userType=registerAsCombo.getValue();
         if(userType==null){
         showAlert("Select a user type !!");
@@ -105,6 +105,7 @@ public class  RegisterController implements Initializable {
                     name,email,phoneNumber,password,language);
             FileHandling.WriteUser(USERTYPE.Tourist,tourist);
         }
+        Navigator.Navigate(NAVIGATIONS.LOGINPAGE,(Stage) RegisterBtn.getScene().getWindow());
     }
 
 

@@ -1,9 +1,9 @@
 package com.example.nepaltourism;
 
+import com.example.nepaltourism.classes.Admin;
 import com.example.nepaltourism.classes.enums.NAVIGATIONS;
 import com.example.nepaltourism.classes.enums.USERTYPE;
-import com.example.nepaltourism.handlers.FileHandling;
-import com.example.nepaltourism.handlers.Navigator;
+import com.example.nepaltourism.handlers.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,20 +52,29 @@ public class LoginController implements Initializable {
         switch(usertype){
             case Admin -> {
                 if(FileHandling.authenticate(USERTYPE.Admin,email,password)){
+                    int userId=UserHandling.getUserId(email,password,USERTYPE.Admin);
+                    String username=UserHandling.getName(userId,USERTYPE.Admin);
                     System.out.println("Login Attempt: " + email + ", " + password + ", " + usertype);
+                    SessionHandler.getInstance().startSession(userId,username,USERTYPE.Admin);
                     Navigator.Navigate(NAVIGATIONS.ADMINPAGE,(Stage) loginBtn.getScene().getWindow());
                     return;
                 }}
             case Guide -> {
                 if(FileHandling.authenticate(USERTYPE.Guide,email,password)){
+                    int userId=UserHandling.getUserId(email,password,USERTYPE.Guide);
+                    String username=UserHandling.getName(userId,USERTYPE.Guide);
                     System.out.println("Login Attempt: " + email + ", " + password + ", " + usertype);
+                    SessionHandler.getInstance().startSession(userId,username,USERTYPE.Guide);
                     Navigator.Navigate(NAVIGATIONS.GUIDEPAGE,(Stage) loginBtn.getScene().getWindow());
                     return;
                 }
             }
             case Tourist ->{
                 if(FileHandling.authenticate(USERTYPE.Tourist,email,password)){
+                    int userId=UserHandling.getUserId(email,password,USERTYPE.Tourist);
+                    String username=UserHandling.getName(userId,USERTYPE.Tourist);
                     System.out.println("Login Attempt: " + email + ", " + password + ", " + usertype);
+                    SessionHandler.getInstance().startSession(userId,username,USERTYPE.Tourist);
                     Navigator.Navigate(NAVIGATIONS.TOURISTPAGE,(Stage) loginBtn.getScene().getWindow());
                     return;
                 }

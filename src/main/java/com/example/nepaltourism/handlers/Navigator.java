@@ -58,17 +58,17 @@ public class Navigator {
                 resizable=false;
             }
             case FESTIVALPAGE -> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/festivaldiscountviewPage.fxml"));
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/festivaldiscoutviewPage.fxml"));
                 activeTitle="Tourist Festival Discount Page";
                 resizable=false;
             }
             case TOURISTUSERPAGE -> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/usereditPage.fxml"));
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/profileEditTourist.fxml"));
                 activeTitle="Tourist Edit Page";
                 resizable=false;
             }
             case  GUIDEUSERPAGE-> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/userguideedit.fxml"));
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/profileEditGuide.fxml"));
                 activeTitle="Guide Edit Page";
                 resizable=false;
             }
