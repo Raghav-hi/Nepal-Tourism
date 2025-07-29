@@ -67,12 +67,17 @@ public class AdminAttractionController {
     private void addActionButtonsToTable() {
         actionsColumn.setCellFactory(col -> new TableCell<>() {
             private final Button removeBtn = new Button("Remove");
-
             {
                 removeBtn.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;");
                 removeBtn.setOnAction(event -> {
                     Attraction attraction = getTableView().getItems().get(getIndex());
-                    removeAttraction(attraction);
+                    System.out.println("Remove button clicked for ID: " + attraction.getId()); // DEBUG
+                    try {
+                        FileHandling.removeAttraction(attraction.getId());
+                        Navigator.Navigate(NAVIGATIONS.ATTRACTIONCONTROLPAGE,(Stage) vbox.getScene().getWindow());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 });
             }
 
@@ -86,18 +91,6 @@ public class AdminAttractionController {
                 }
             }
         });
-    }
-
-    private void removeAttraction(Attraction attraction) {
-        try {
-            FileHandling.removeAttraction(attraction.getId());  // Your existing file remove method
-            attractionList.remove(attraction);           // Remove from observable list
-            attractionsTable.refresh();
-        } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to remove attraction.", ButtonType.OK);
-            alert.show();
-        }
     }
 
     @FXML

@@ -21,19 +21,19 @@
             </HBox>
 
             <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;">
-                <Button text="Home" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goHome"/>
-                <Button text="Attractions" style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" onAction="#goAttraction"/>
-                <Button text="My Bookings" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goBookings"/>
-                <Button text="User" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goUserEdit"/>
+                <Button text="%homeOption" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goHome"/>
+                <Button text="%attractionOption" style="-fx-text-fill: white; -fx-background-color: #3498db; " onAction="#goAttraction"/>
+                <Button text="%bookingOption" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goBookings"/>
+                <Button text="%userOption" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goUserEdit"/>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Button text="Logout" style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" onAction="#onLogout"/>
+                <Button text="%logoutOption" style="-fx-text-fill: white; -fx-background-color: #e74c3c; " onAction="#onLogout"/>
             </HBox>
         </VBox>
     </top>
 
     <center>
         <VBox alignment="TOP_CENTER" prefHeight="428.0" prefWidth="616.0" spacing="20" style="-fx-padding: 30;">
-            <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Book Your Adventure" />
+            <Label style="-fx-font-size: 28;  -fx-text-fill: #2c3e50;" text="%bookYourAdventure" />
 
             <!-- Attraction Info -->
             <HBox alignment="CENTER" spacing="20">
@@ -53,11 +53,10 @@
                 </columnConstraints>
 
                 <!-- Row 0: Booking Date -->
-                <Label style="-fx-font-weight: bold;" text="Booking Date:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <DatePicker style="-fx-pref-width: 200;" GridPane.columnIndex="1" GridPane.rowIndex="0"  fx:id="bookingDatePicker"/>
+                <Label  text="%bookingDateLabel" GridPane.columnIndex="0" GridPane.rowIndex="0" />
 
                 <!-- Row 1: Festival Discounts -->
-                <Label style="-fx-font-weight: bold;" text="Festival Discounts:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label text="%festivalDiscountLabel" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <ComboBox fx:id="festivalComboBox" prefWidth="200">
 
@@ -65,13 +64,14 @@
                 </HBox>
 
                 <!-- Row 2: Discount Rate -->
-                <Label style="-fx-font-weight: bold;" text="Discount:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <Label fx:id="discountLabel" style="-fx-text-fill: #e74c3c; -fx-font-weight: bold;" text="0%" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label  text="%discountLabel" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label fx:id="discountLabel" style="-fx-text-fill: #e74c3c; " text="0%" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                <!-- Row 3: Action Buttons -->
+                <DatePicker style="-fx-pref-width: 200;" GridPane.columnIndex="1" GridPane.rowIndex="0"  fx:id="bookingDatePicker" />
+<!-- Row 3: Action Buttons -->
                 <HBox spacing="20" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                    <Button style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;" text="Cancel" onAction="#goAttraction"/>
-                    <Button style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;" text="Submit" onAction="#onSubmit"/>
+                    <Button style="-fx-background-color: #95a5a6; -fx-text-fill: white;  -fx-padding: 8 20;" text="%cancelButton" onAction="#goAttraction"/>
+                    <Button style="-fx-background-color: #27ae60; -fx-text-fill: white;  -fx-padding: 8 20;" text="%saveButton" onAction="#onSubmit"/>
                 </HBox>
             <rowConstraints>
                <RowConstraints />
@@ -86,7 +86,7 @@
     <!-- Optional Footer -->
     <bottom>
         <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 10;">
-            <Label style="-fx-text-fill: #ecf0f1;" text="Book now to experience the magic of Mustang!" />
+            <Label style="-fx-text-fill: #ecf0f1;" text="%footerMessage" />
         </HBox>
     </bottom>
 </BorderPane>

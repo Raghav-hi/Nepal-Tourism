@@ -20,12 +20,12 @@
             </HBox>
 
             <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #2c3e50;" >
-                <Button text="Home" style="-fx-text-fill: white; -fx-background-color: #3498db; -fx-font-weight: bold;" onAction="#goHome"/>
-                <Button text="Attractions" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goAttraction"/>
-                <Button text="My Bookings" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goBookings"/>
-                <Button text="User" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goUserEdit"/>
+                <Button text="%homeOption" style="-fx-text-fill: white; -fx-background-color: #3498db; " onAction="#goHome"/>
+                <Button text="%attractionOption" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goAttraction"/>
+                <Button text="%bookingOption" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goBookings"/>
+                <Button text="%userOption" style="-fx-text-fill: white; -fx-background-color: transparent;" onAction="#goUserEdit"/>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Button text="Logout" style="-fx-text-fill: white; -fx-background-color: #e74c3c; -fx-font-weight: bold;" onAction="#onLogout"/>
+                <Button text="%logoutOption" style="-fx-text-fill: white; -fx-background-color: #e74c3c; " onAction="#onLogout"/>
             </HBox>
         </VBox>
     </top>
@@ -35,9 +35,9 @@
             <!-- Alert Table -->
             <TableView fx:id="alertTable">
                 <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
-                    <TableColumn fx:id="colMessage" text="Message" prefWidth="100"/>
-                    <TableColumn fx:id="colMonthsActive" text="Months Active" prefWidth="100"/>
+                    <TableColumn fx:id="colId" text="%alertId" prefWidth="50" style="-fx-font-weight: normal;"/>
+                    <TableColumn fx:id="colMessage" text="%alertMessage" prefWidth="100" style="-fx-font-weight: normal;"/>
+                    <TableColumn fx:id="colMonthsActive" text="%alertMonths" prefWidth="100" style="-fx-font-weight: normal;"/>
                 </columns>
             </TableView>
         </VBox>
@@ -46,7 +46,7 @@
     <!-- Optional Footer -->
     <bottom>
         <HBox alignment="CENTER" style="-fx-background-color: #1a252f; -fx-padding: 10;">
-            <Label text="© 2025 Nepal Tourism Board. All rights reserved." style="-fx-text-fill: #ecf0f1;"/>
+            <Label text="%footerText" style="-fx-text-fill: #ecf0f1;"/>
         </HBox>
     </bottom>
 </BorderPane>

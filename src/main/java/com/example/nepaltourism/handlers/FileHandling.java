@@ -611,13 +611,11 @@ public class FileHandling {
                 }
             }
         }
-        if(tempFile.exists()) {
-            if (!originalFile.delete()) {
-                throw new IOException("Could not delete original file");
-            }
-            if (!tempFile.renameTo(originalFile)) {
-                throw new IOException("Could not rename temp file to original");
-            }
+        if (!originalFile.delete()) {
+            throw new IOException("Could not delete original file");
+        }
+        if (!tempFile.renameTo(originalFile)) {
+            throw new IOException("Could not rename temp file to original");
         }
 
     }

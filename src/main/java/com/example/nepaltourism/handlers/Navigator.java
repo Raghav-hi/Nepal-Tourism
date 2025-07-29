@@ -1,6 +1,11 @@
 package com.example.nepaltourism.handlers;
 
+import com.example.nepaltourism.LocaleStorageSingleton;
+import com.example.nepaltourism.classes.Guide;
+import com.example.nepaltourism.classes.Tourist;
+import com.example.nepaltourism.classes.enums.LANGUAGES;
 import com.example.nepaltourism.classes.enums.NAVIGATIONS;
+import com.example.nepaltourism.classes.enums.USERTYPE;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +21,7 @@ public class Navigator {
     public static boolean resizable;
     @FXML
     public static void Navigate(NAVIGATIONS nav, Stage stage) throws IOException {
+        ResourceBundle bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
         switch(nav){
             case LOGINPAGE -> {
                 activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/loginPage.fxml"));
@@ -28,12 +34,30 @@ public class Navigator {
                 resizable=false;
             }
             case TOURISTPAGE -> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/touristPage.fxml"));
+                Tourist tourist=(Tourist) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Tourist);
+                assert tourist != null;
+                if(tourist.getLanguagePref()== LANGUAGES.Nepali){
+                    LocaleStorageSingleton.setLocaleNp();
+                }
+                else{
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/touristPage.fxml"),bundle);
                 activeTitle="Tourist Page";
                 resizable=false;
             }
             case  GUIDEPAGE-> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/guidePage.fxml"));
+                Guide guide = (Guide) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Guide);
+                assert guide != null;
+                if (guide.getLanguageSpoken() == LANGUAGES.Nepali) {
+                    LocaleStorageSingleton.setLocaleNp();
+                } else {
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/guidePage.fxml"),bundle);
                 activeTitle="Guide Page";
                 resizable=false;
             }
@@ -43,47 +67,128 @@ public class Navigator {
                 resizable=false;
             }
             case  MYBOOKINGPAGE-> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/mybookingPage.fxml"));
+                Tourist tourist=(Tourist) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Tourist);
+                assert tourist != null;
+                if(tourist.getLanguagePref()== LANGUAGES.Nepali){
+                    LocaleStorageSingleton.setLocaleNp();
+                }
+                else{
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/mybookingPage.fxml"),bundle );
                 activeTitle="Tourist Mybooking Page";
                 resizable=false;
             }
             case  ATRRACTIONPAGE-> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/attractionPage.fxml"));
+                Tourist tourist=(Tourist) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Tourist);
+                assert tourist != null;
+                if(tourist.getLanguagePref()== LANGUAGES.Nepali){
+                    LocaleStorageSingleton.setLocaleNp();
+                }
+                else{
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/attractionPage.fxml"),bundle);
                 activeTitle="Tourist Attraction Page";
                 resizable=false;
             }
             case  GUIDEMYBOOKINGPAGE-> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/mybookingguidePage.fxml"));
+                Guide guide = (Guide) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Guide);
+                assert guide != null;
+                if (guide.getLanguageSpoken() == LANGUAGES.Nepali) {
+                    LocaleStorageSingleton.setLocaleNp();
+                } else {
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/mybookingguidePage.fxml"),bundle);
                 activeTitle="Guide MyBooking Page";
                 resizable=false;
             }
             case FESTIVALPAGE -> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/festivaldiscoutviewPage.fxml"));
+                Tourist tourist=(Tourist) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Tourist);
+                assert tourist != null;
+                if(tourist.getLanguagePref()== LANGUAGES.Nepali){
+                    LocaleStorageSingleton.setLocaleNp();
+                }
+                else{
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/festivaldiscoutviewPage.fxml"),bundle);
                 activeTitle="Tourist Festival Discount Page";
                 resizable=false;
             }
             case TOURISTUSERPAGE -> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/profileEditTourist.fxml"));
+                Tourist tourist=(Tourist) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Tourist);
+                assert tourist != null;
+                if(tourist.getLanguagePref()== LANGUAGES.Nepali){
+                    LocaleStorageSingleton.setLocaleNp();
+                }
+                else{
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/profileEditTourist.fxml"),bundle);
                 activeTitle="Tourist Edit Page";
                 resizable=false;
             }
             case  GUIDEUSERPAGE-> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/profileEditGuide.fxml"));
+                Guide guide=(Guide) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Guide);
+                assert guide != null;
+                if(guide.getLanguageSpoken()== LANGUAGES.Nepali){
+                    LocaleStorageSingleton.setLocaleNp();
+                }
+                else{
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/profileEditGuide.fxml"),bundle);
                 activeTitle="Guide Edit Page";
                 resizable=false;
             }
             case  BOOKINGPAGE-> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/makebookingPage.fxml"));
+                Tourist tourist=(Tourist) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Tourist);
+                assert tourist != null;
+                if(tourist.getLanguagePref()== LANGUAGES.Nepali){
+                    LocaleStorageSingleton.setLocaleNp();
+                }
+                else{
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/makebookingPage.fxml"),bundle);
                 activeTitle="Make Booking Page";
                 resizable=false;
             }
             case  ALERTPAGE-> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/alertviewPage.fxml"));
+                Tourist tourist=(Tourist) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Tourist);
+                assert tourist != null;
+                if(tourist.getLanguagePref()== LANGUAGES.Nepali){
+                    LocaleStorageSingleton.setLocaleNp();
+                }
+                else{
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/alertviewPage.fxml"),bundle);
                 activeTitle="Tourist Alert View Page";
                 resizable=false;
             }
             case  GUIDEALERTPAGE-> {
-                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/alertviewguidePage.fxml"));
+                Guide guide = (Guide) ObjectFinder.getUser(SessionHandler.getInstance().getUserId(), USERTYPE.Guide);
+                assert guide != null;
+                if (guide.getLanguageSpoken() == LANGUAGES.Nepali) {
+                    LocaleStorageSingleton.setLocaleNp();
+                } else {
+                    LocaleStorageSingleton.setLocaleEn();
+                }
+                bundle = ResourceBundle.getBundle("languages.language", LocaleStorageSingleton.getLocale());
+                activeLoader=new FXMLLoader(Navigator.class.getResource("/com/example/nepaltourism/alertviewguidePage.fxml"),bundle);
                 activeTitle="Guide Alert View Page";
                 resizable=false;
             }

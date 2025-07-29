@@ -47,4 +47,8 @@ public class Guide extends User {
     public void viewAssignedBookings() {
 
     }
+
+    public LANGUAGES getLanguagePref() {
+        return null;
+    }
 }
