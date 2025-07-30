@@ -41,17 +41,13 @@ public class  RegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Populate language combo
         languageCombo.getItems().setAll(LANGUAGES.values());
 
-        // Add only Tourist and Guide to registerAsCombo
         registerAsCombo.getItems().clear();
         registerAsCombo.getItems().addAll(USERTYPE.Tourist, USERTYPE.Guide);
 
-        // Default: Hide experience field (assuming Tourist is default)
-        toggleExperienceField(USERTYPE.Tourist);
+        toggleExperienceField(USERTYPE.Tourist);  // Hide experience by default
 
-        // Add listener to show/hide YOE field based on selected user type
         registerAsCombo.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 toggleExperienceField(newValue);
@@ -61,7 +57,7 @@ public class  RegisterController implements Initializable {
 
     @FXML
     private void toggleExperienceField(USERTYPE userType) {
-        boolean isGuide =userType.equals(USERTYPE.Guide);
+        boolean isGuide = userType.equals(USERTYPE.Guide);
 
         expLabel.setVisible(isGuide);
         expLabel.setManaged(isGuide);
@@ -75,57 +71,82 @@ public class  RegisterController implements Initializable {
 
     @FXML
     private void handleRegister() throws IOException {
-        USERTYPE userType=registerAsCombo.getValue();
-        if(userType==null){
-        showAlert("Select a user type !!");
-        return;
-        }
-        String name=fullNameField.getText();
-        String email=EmailField.getText();
-        String phoneNumber=phoneField.getText();
-        String password=passwordField.getText();
-        LANGUAGES language=(languageCombo.getValue()==null)?LANGUAGES.English:languageCombo.getValue();
-        if(name.trim().isEmpty()|| email.trim().isEmpty()||phoneNumber.trim().isEmpty()||password.trim().isEmpty()){
-            showAlert("Empty Fields");
+        // Get inputs
+        USERTYPE userType = registerAsCombo.getValue();
+        String name = fullNameField.getText().trim();
+        String email = EmailField.getText().trim();
+        String phoneNumber = phoneField.getText().replaceAll("\\s", "");  // remove all spaces
+        String password = passwordField.getText().trim();
+        LANGUAGES language = (languageCombo.getValue() == null) ? LANGUAGES.English : languageCombo.getValue();
+
+        // Basic validations
+        if (userType == null) {
+            showAlert("Select a user type.");
             return;
         }
-        if(FileHandling.emailExists(userType,EmailField.getText())){
-            showAlert("This email Already Exists!!");
+
+        if (name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || password.isEmpty()) {
+            showAlert("All fields must be filled.");
             return;
         }
-        if(userType.equals(USERTYPE.Guide)){
-         int YOE=(expField.getText().trim().isEmpty())?0:Integer.parseInt(expField.getText());
-            Guide guide= new Guide(FileHandling.getNextId(FileHandling.GuideFile), name, email, phoneNumber, password, language, YOE);
-            FileHandling.WriteUser(USERTYPE.Guide,guide);
+
+        if (!name.matches("[A-Za-z\\s]+")) {
+            showAlert("Name must contain only letters and spaces.");
+            return;
+        }
+
+        if (!email.matches("[\\w.%+-]+@[\\w.-]+\\.[A-Za-z]{2,6}")) {
+            showAlert("Invalid email format.");
+            return;
+        }
+
+        if (FileHandling.emailExists(userType, email)) {
+            showAlert("This email already exists.");
+            return;
+        }
+
+        if (!phoneNumber.matches("\\d{10}")) {
+            showAlert("Phone number must be exactly 10 digits.");
+            return;
+        }
 
 
+        if (password.length() < 8 || !password.matches(".*[!@#$%^&()].*")) {
+            showAlert("Password must be at least 8 characters and should include a special character (!@#$%^&*).");
+            return;
         }
-        else{
-            Tourist tourist=new Tourist(FileHandling.getNextId(FileHandling.TouristFile),
-                    name,email,phoneNumber,password,language);
-            FileHandling.WriteUser(USERTYPE.Tourist,tourist);
+
+        // Experience validation (Guide only)
+        int YOE = 0;
+        if (userType.equals(USERTYPE.Guide)) {
+            String yoeText = expField.getText().trim();
+            if (yoeText.isEmpty() || !yoeText.matches("\\d+")) {
+                showAlert("Experience must be a valid number.");
+                return;
+            }
+            YOE = Integer.parseInt(yoeText);
+
+            Guide guide = new Guide(FileHandling.getNextId(FileHandling.GuideFile), name, email, phoneNumber, password, language, YOE);
+            FileHandling.WriteUser(USERTYPE.Guide, guide);
+        } else {
+            Tourist tourist = new Tourist(FileHandling.getNextId(FileHandling.TouristFile), name, email, phoneNumber, password, language);
+            FileHandling.WriteUser(USERTYPE.Tourist, tourist);
         }
-        Navigator.Navigate(NAVIGATIONS.LOGINPAGE,(Stage) RegisterBtn.getScene().getWindow());
+
+        // Success - navigate to login
+        Navigator.Navigate(NAVIGATIONS.LOGINPAGE, (Stage) RegisterBtn.getScene().getWindow());
     }
-
-
-
-
-
-
 
     @FXML
     private void handleLoginLink(ActionEvent event) throws IOException {
-        // Login screen transition logic
-        System.out.println("Opening login screen...");
         Navigator.Navigate(NAVIGATIONS.LOGINPAGE, (Stage) ((Node) event.getSource()).getScene().getWindow());
     }
 
-    public void showAlert(String message){
-        Alert alert=new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Register Error");
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Registration Error");
+        alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
 }
-
+}
